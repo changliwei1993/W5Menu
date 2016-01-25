@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by arthur on 16-1-25.
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 
 public class MenuListFragment extends Fragment {
     private View mMainView;
-
 
 
     public MenuListFragment() {

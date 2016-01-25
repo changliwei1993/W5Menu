@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="400px"
+    android:layout_height="400px"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context="com.arthur.w5alarm.activity.AlarmTotalSettingActivity">
@@ -14,15 +14,23 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/indicator"></android.support.v4.view.ViewPager>
 
+
+    <ImageView
+        android:id="@+id/cover_view"
+        android:layout_width="match_parent"
+        android:layout_height="133.3px"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/cover_line_view"/>
+
     <menu.arthur.w5menu.viewpagerindicator.CirclePageIndicator
         android:id="@+id/indicator"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="2dp"
-        app:radius="2dp"
-        app:fillColor="@color/alarmblue"
-        app:pageColor="#BABABA"
+        app:radius="4dp"
+        app:fillColor="#BABABA"
+        app:pageColor="#FFFFFF"
         app:strokeColor="#FF000000"
         app:strokeWidth="0dp"
         android:layout_gravity="top"/>

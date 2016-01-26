@@ -3,18 +3,14 @@ package menu.arthur.w5menu;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by arthur on 16-1-25.
@@ -23,7 +19,7 @@ import java.util.Calendar;
 
 public class MenuListFragment extends Fragment {
     private View mMainView;
-    private ArrayList<ItemDatas> listItemDatas=new ArrayList<>();
+    private ArrayList<PInfo> listItemDatas=new ArrayList<>();
     private ListView menu_listview;
 
 
@@ -56,7 +52,7 @@ public class MenuListFragment extends Fragment {
     }
 
 
-    public void setListItemDatas(ArrayList<ItemDatas> listItemDatas) {
+    public void setListItemDatas(ArrayList<PInfo> listItemDatas) {
         this.listItemDatas = listItemDatas;
     }
 
@@ -97,7 +93,7 @@ public class MenuListFragment extends Fragment {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.appName.setText(listItemDatas.get(position).getName()
+            holder.appName.setText(listItemDatas.get(position).appname
             );
             return convertView;
         }

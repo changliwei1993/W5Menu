@@ -17,6 +17,7 @@ import menu.arthur.w5menu.viewpagerindicator.CirclePageIndicator;
 public class MainActivity extends FragmentActivity {
     private ViewPager menu_viewpager;
     private CirclePageIndicator mIndicator;
+    private String[] categoryList=new String[]{"学习","健康娱乐","应用工具"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,13 @@ public class MainActivity extends FragmentActivity {
         mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
         ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
         for (int i=0;i<3;i++){
-            fragmentArrayList.add(new MenuListFragment());
+            ArrayList<ItemDatas> listItemDatas=new ArrayList<>();
+            ItemDatas itemDatas=new ItemDatas();
+            itemDatas.setName(categoryList[i]);
+            listItemDatas.add(itemDatas);
+            MenuListFragment menuListFragment=new MenuListFragment();
+            menuListFragment.setListItemDatas(listItemDatas);
+            fragmentArrayList.add(menuListFragment);
         }
 
         MyViewPagerAdapter myViewPagerAdapter=new MyViewPagerAdapter(getSupportFragmentManager(),fragmentArrayList);

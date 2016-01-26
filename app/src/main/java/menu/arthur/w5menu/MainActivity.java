@@ -35,6 +35,9 @@ public class MainActivity extends FragmentActivity {
             ItemDatas itemDatas=new ItemDatas();
             itemDatas.setName(categoryList[i]);
             listItemDatas.add(itemDatas);
+            listItemDatas.add(itemDatas);
+            listItemDatas.add(itemDatas);
+            listItemDatas.add(itemDatas);
             MenuListFragment menuListFragment=new MenuListFragment();
             menuListFragment.setListItemDatas(listItemDatas);
             fragmentArrayList.add(menuListFragment);

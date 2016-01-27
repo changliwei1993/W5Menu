@@ -7,14 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-/**
- * Created by arthur on 16-1-25.
- */
 
 
 public class MenuListFragment extends Fragment {
@@ -84,17 +81,23 @@ public class MenuListFragment extends Fragment {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
+            ViewHolder holder ;
             if (convertView == null) {
                 holder = new ViewHolder();
                 convertView = mInflater.inflate(R.layout.menu_list_item, null);
                 holder.appName = (TextView) convertView.findViewById(R.id.appName);
+                holder.appIcon=(ImageView)convertView.findViewById(R.id.appIcon);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.appName.setText(listItemDatas.get(position).appname
-            );
+            if (listItemDatas.get(position).appname!=null) {
+                holder.appName.setText(listItemDatas.get(position).appname);
+            }
+            if (listItemDatas.get(position).icon!=null) {
+                holder.appIcon.setVisibility(View.VISIBLE);
+                holder.appIcon.setImageDrawable(listItemDatas.get(position).icon);
+            }else {holder.appIcon.setVisibility(View.GONE);}
             return convertView;
         }
 
@@ -105,6 +108,7 @@ public class MenuListFragment extends Fragment {
 
         class ViewHolder {
             public TextView appName;
+            public ImageView appIcon;
         }
     }
 }

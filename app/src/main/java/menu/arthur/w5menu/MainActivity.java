@@ -18,7 +18,8 @@ public class MainActivity extends FragmentActivity {
     private ViewPager menu_viewpager;
     private CirclePageIndicator mIndicator;
     private String[] categoryList=new String[]{"学习","健康娱乐","应用工具"};
-    ArrayList<PInfo> apps;
+    private ArrayList<ArrayList<PInfo>>  categoryListApps=new ArrayList<ArrayList<PInfo>>();//分类下的App
+    private ArrayList<PInfo> apps;//系统中所有的App
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +33,19 @@ public class MainActivity extends FragmentActivity {
         mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
         listPackages();
 
+        for (int i=0;i<3;i++){
+            PInfo pInfo=new PInfo();
+            pInfo.appname=categoryList[i];
+            ArrayList<PInfo> pInfoArrayList=new ArrayList<>();
+            pInfoArrayList.add(pInfo);
+            pInfoArrayList.addAll(apps);
+            categoryListApps.add(pInfoArrayList);
+        }
+
         ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
         for (int i=0;i<3;i++){
             MenuListFragment menuListFragment=new MenuListFragment();
-            menuListFragment.setListItemDatas(apps);
+            menuListFragment.setListItemDatas(categoryListApps.get(i));
             fragmentArrayList.add(menuListFragment);
         }
 

@@ -9,10 +9,16 @@
 
         <TextView
             android:id="@+id/appName"
-            android:layout_width="wrap_content"
+            android:layout_width="200px"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="140px"
             android:layout_centerVertical="true"/>
+        <ImageView
+            android:id="@+id/appIcon"
+            android:layout_width="60px"
+            android:layout_height="60px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40px"/>
 
     </RelativeLayout>
 

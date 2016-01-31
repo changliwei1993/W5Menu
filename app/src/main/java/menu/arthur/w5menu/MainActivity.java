@@ -1,12 +1,15 @@
 package menu.arthur.w5menu;
 
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Window;
 
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ import java.util.List;
 import menu.arthur.w5menu.viewpagerindicator.CirclePageIndicator;
 
 public class MainActivity extends FragmentActivity {
+    private static final String TAG = "MainActivity";
     private ViewPager menu_viewpager;
     private CirclePageIndicator mIndicator;
     private String[] categoryList=new String[]{"学习","健康娱乐","应用工具"};
@@ -29,6 +33,18 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initView(){
+        ActivityInfo info= null;
+        try {
+            info = this.getPackageManager()
+                    .getActivityInfo(getComponentName(),
+                            PackageManager.GET_INTENT_FILTERS);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        Log.d(TAG, " ComponentName == " + getComponentName());
+        Log.d(TAG, " PackageName == " + getPackageName());
+        Log.d(TAG, " IntentFilters == " + info.name);
+
         menu_viewpager=(ViewPager)findViewById(R.id.menu_viewpager);
         mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
         listPackages();
@@ -74,6 +90,7 @@ public class MainActivity extends FragmentActivity {
             newInfo.versionCode = p.versionCode;
             newInfo.icon = p.applicationInfo.loadIcon(getPackageManager());
             res.add(newInfo);
+
         }
         return res;
     }

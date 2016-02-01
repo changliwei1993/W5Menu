@@ -22,7 +22,7 @@ public class MainActivity extends FragmentActivity {
     private ViewPager menu_viewpager;
     private CirclePageIndicator mIndicator;
     private String[] categoryList=new String[]{"学习","健康娱乐","应用工具"};
-    private ArrayList<ArrayList<PInfo>>  categoryListApps=new ArrayList<ArrayList<PInfo>>();//分类下的App
+    private ArrayList<ArrayList<PInfo>>  categoryListApps=new ArrayList<>();//分类下的App
     private ArrayList<PInfo> apps;//系统中所有的App
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class MainActivity extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         initView();
+
     }
 
     private void initView(){
@@ -43,7 +44,9 @@ public class MainActivity extends FragmentActivity {
         }
         Log.d(TAG, " ComponentName == " + getComponentName());
         Log.d(TAG, " PackageName == " + getPackageName());
-        Log.d(TAG, " IntentFilters == " + info.name);
+        if (info != null) {
+            Log.d(TAG, " IntentFilters == " + info.name);
+        }
 
         menu_viewpager=(ViewPager)findViewById(R.id.menu_viewpager);
         mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
@@ -75,7 +78,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private ArrayList<PInfo> getInstalledApps(boolean getSysPackages) {
-        ArrayList<PInfo> res = new ArrayList<PInfo>();
+        ArrayList<PInfo> res = new ArrayList<>();
         List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
         for (int i = 0; i < packs.size(); i++) {
             PackageInfo p = packs.get(i);
